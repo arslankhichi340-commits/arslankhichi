@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Arslan Khichi AI Prompt Assistant — create, refine, organize and copy powerful AI prompts.">
+  <title>Arslan Khichi AI Prompt Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">AK<span>✦</span></div>
+      <div><strong>ARSLAN KHICHI</strong><small>AI PROMPT ASSISTANT</small></div>
+      <button class="icon-btn close-sidebar" id="closeSidebar" aria-label="Close menu">×</button>
+    </div>
+    <button class="new-chat" id="newChat"><span>＋</span> New prompt</button>
+    <div class="side-label">WORKSPACE</div>
+    <button class="side-link active" data-view="assistant"><span>✧</span> AI Assistant</button>
+    <button class="side-link" data-view="image"><span>▧</span> Image Studio <em>NEW</em></button>
+    <button class="side-link" data-view="library"><span>▤</span> Prompt Library</button>
+    <button class="side-link" data-view="history"><span>◷</span> Prompt History</button>
+    <div class="side-label">YOUR TOOLS</div>
+    <button class="side-link" data-view="templates"><span>✳</span> Prompt Templates</button>
+    <button class="side-link" data-view="favorites"><span>♡</span> Favorites</button>
+    <div class="sidebar-bottom">
+      <div class="upgrade-card"><div class="spark">✦</div><strong>Make ideas happen.</strong><p>Build better prompts for every AI workflow.</p><button id="exploreTools">Explore tools <span>→</span></button></div>
+      <div class="profile"><div class="avatar">AK</div><div><strong>Arslan Khichi</strong><small>Personal workspace</small></div><button class="dots" title="Profile options">•••</button></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="breadcrumb">Workspace <span>/</span> <strong id="crumb">AI Assistant</strong></div>
+      <div class="top-actions"><span class="status-dot"></span><span class="online-label">Workspace ready</span><button class="top-avatar">AK</button></div>
+    </header>
+
+    <section class="view active-view" id="assistantView">
+      <div class="welcome">
+        <div class="eyebrow"><span class="pulse"></span> YOUR CREATIVE AI WORKSPACE</div>
+        <h1>What would you like to <span>create today?</span></h1>
+        <p>Turn a simple thought into a clear, powerful prompt for your favorite AI tools.</p>
+      </div>
+      <div class="quick-grid">
+        <button class="quick-card" data-kind="Writing"><span class="quick-icon violet">✎</span><strong>Write & create</strong><small>Stories, blogs, emails and content</small><b>↗</b></button>
+        <button class="quick-card" data-kind="Business"><span class="quick-icon blue">▥</span><strong>Grow a business</strong><small>Plans, marketing and strategy</small><b>↗</b></button>
+        <button class="quick-card" data-kind="Image"><span class="quick-icon pink">▧</span><strong>Create an image</strong><small>Visual concepts and image prompts</small><b>↗</b></button>
+        <button class="quick-card" data-kind="Learning"><span class="quick-icon green">⌘</span><strong>Learn something</strong><small>Lessons, research and explanations</small><b>↗</b></button>
+      </div>
+
+      <div class="composer-wrap">
+        <div class="composer-head"><div><span class="live-dot"></span> PROMPT BUILDER</div><span class="secure-label">✦ Crafted for better results</span></div>
+        <textarea id="ideaInput" rows="4" placeholder="Describe what you want to achieve. For example: Create a premium website for my clothing brand..."></textarea>
+        <div class="composer-options">
+          <label>AI tool <select id="aiTool"><option>ChatGPT</option><option>Google Gemini</option><option>Claude</option><option>Midjourney</option><option>DALL·E</option><option>Runway / Video AI</option><option>Universal prompt</option></select></label>
+          <label>Category <select id="aiCategory"><option>General</option><option>Writing</option><option>Business</option><option>Education</option><option>Marketing</option><option>Website Development</option><option>Image Generation</option><option>Video Generation</option><option>Programming</option></select></label>
+          <label>Style <select id="aiStyle"><option>Professional</option><option>Creative</option><option>Detailed</option><option>Beginner friendly</option><option>Expert level</option></select></label>
+        </div>
+        <div class="composer-foot"><span class="hint">Tip: Include your goal, audience and desired result.</span><button class="generate-btn" id="generateBtn">✦ Generate prompt <span>→</span></button></div>
+      </div>
+
+      <div class="output-panel" id="outputPanel">
+        <div class="output-top"><div><span class="output-kicker">YOUR RESULT</span><h2>Generated prompt</h2></div><div class="output-actions"><button class="soft-btn" id="favoriteBtn">♡ Save</button><button class="soft-btn" id="copyBtn">▢ Copy</button></div></div>
+        <div id="outputText" class="output-text empty-output">Your polished prompt will appear here. Start by describing your idea above.</div>
+        <div class="output-bottom"><span id="wordCount">0 words</span><button class="text-btn" id="sendToImage">Use in Image Studio ↗</button></div>
+      </div>
+      <div class="below-grid">
+        <div class="section-title"><div><span class="eyebrow">GET INSPIRED</span><h2>Popular prompt ideas</h2></div><button class="text-btn" data-goto="library">View library →</button></div>
+        <div class="idea-row">
+          <button class="idea-chip" data-idea="Act as a senior brand strategist. Create a memorable brand identity for a modern Pakistani startup.">✦ Brand identity</button>
+          <button class="idea-chip" data-idea="Act as a professional photographer. Write a cinematic product photography prompt with lighting and composition details.">▧ Product photography</button>
+          <button class="idea-chip" data-idea="Act as an expert tutor. Teach me a difficult topic with simple examples and a short quiz.">⌘ Study assistant</button>
+          <button class="idea-chip" data-idea="Act as a social media manager. Build a 30-day content calendar for my business.">◉ Social media plan</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="imageView">
+      <div class="page-heading"><div class="eyebrow">VISUAL CREATION WORKSPACE</div><h1>Image <span>Studio</span></h1><p>Write a detailed visual brief and prepare an image-generation prompt.</p></div>
+      <div class="studio-layout">
+        <div class="studio-controls">
+          <label class="field-label" for="imageIdea">Describe your image</label>
+          <textarea id="imageIdea" class="large-input" rows="6" placeholder="A cinematic portrait of a young entrepreneur in a modern office, warm golden-hour light..."></textarea>
+          <div class="two-fields">
+            <label class="field-label">Visual style<select id="visualStyle"><option>Photorealistic</option><option>Cinematic</option><option>3D render</option><option>Digital illustration</option><option>Anime</option><option>Minimalist</option><option>Watercolor</option></select></label>
+            <label class="field-label">Aspect ratio<select id="aspect"><option>1:1 Square</option><option>16:9 Landscape</option><option>9:16 Portrait</option><option>4:5 Social post</option><option>3:2 Photography</option></select></label>
+          </div>
+          <label class="field-label">Lighting<select id="lighting"><option>Natural soft light</option><option>Golden hour</option><option>Dramatic studio lighting</option><option>Neon cinematic lighting</option><option>Soft diffused light</option></select></label>
+          <label class="field-label">Extra details<textarea id="imageDetails" rows="2" placeholder="Colors, camera angle, background, mood, details to avoid..."></textarea></label>
+          <button class="generate-btn wide" id="buildImagePrompt">✦ Build image prompt →</button>
+          <div class="notice"><strong>Image generation connection</strong><p>This offline website prepares a ready-to-use prompt. Actual AI image rendering needs a connected image-generation provider/API.</p></div>
+        </div>
+        <div class="image-preview-card">
+          <div class="preview-header"><strong>Creative canvas</strong><span class="canvas-status">PROMPT PREVIEW</span></div>
+          <div class="canvas-placeholder" id="canvasPlaceholder"><div class="canvas-symbol">▧</div><strong>Your visual starts with an idea</strong><p>Build your image prompt to see it here.</p></div>
+          <div class="image-result" id="imageResult" hidden></div>
+          <div class="preview-footer"><span>✦ Arslan Khichi AI Studio</span><button class="soft-btn" id="copyImagePrompt">Copy prompt</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="libraryView">
+      <div class="page-heading"><div class="eyebrow">CURATED PROMPT COLLECTION</div><h1>Prompt <span>Library</span></h1><p>Explore ready-to-use prompt starters. Select one to customize it in your assistant.</p></div>
+      <div class="library-toolbar"><input id="librarySearch" type="search" placeholder="Search prompts, topics or categories..."><select id="libraryFilter"><option>All categories</option><option>Business</option><option>Writing</option><option>Image</option><option>Education</option><option>Marketing</option><option>Development</option></select></div>
+      <div class="library-grid" id="libraryGrid"></div>
+    </section>
+
+    <section class="view" id="historyView">
+      <div class="page-heading"><div class="eyebrow">YOUR RECENT WORK</div><h1>Prompt <span>History</span></h1><p>Prompts you have generated in this browser.</p></div>
+      <div class="history-list" id="historyList"></div>
+    </section>
+
+    <section class="view" id="templatesView">
+      <div class="page-heading"><div class="eyebrow">START WITH A FRAMEWORK</div><h1>Prompt <span>Templates</span></h1><p>Use structured frameworks to get clearer and more consistent AI responses.</p></div>
+      <div class="template-grid">
+        <article class="template-card"><span>01 / ROLE + TASK</span><h3>Expert role framework</h3><p>Give the AI a role, a clear task and the expected result.</p><button data-template="Act as an expert [ROLE]. Your task is to [TASK]. My context is [CONTEXT]. Deliver the result as [FORMAT], following these constraints: [CONSTRAINTS].">Use framework →</button></article>
+        <article class="template-card"><span>02 / CONTEXT + GOAL</span><h3>Strategy framework</h3><p>Set the context, define success and request an actionable plan.</p><button data-template="Context: [BACKGROUND]. Goal: [DESIRED OUTCOME]. Audience: [TARGET AUDIENCE]. Create a step-by-step strategy with priorities, resources, risks and success metrics.">Use framework →</button></article>
+        <article class="template-card"><span>03 / CREATIVE BRIEF</span><h3>Visual direction framework</h3><p>Describe subject, composition, style, lighting and mood.</p><button data-template="Create a [STYLE] visual of [SUBJECT]. Composition: [COMPOSITION]. Environment: [SETTING]. Lighting: [LIGHTING]. Color palette: [COLORS]. Mood: [MOOD]. Camera and detail: [DETAILS].">Use framework →</button></article>
+      </div>
+    </section>
+
+    <section class="view" id="favoritesView">
+      <div class="page-heading"><div class="eyebrow">SAVED FOR LATER</div><h1>Your <span>Favorites</span></h1><p>Keep your most useful prompts close at hand.</p></div>
+      <div class="history-list" id="favoritesList"></div>
+    </section>
+
+    <footer class="app-footer"><span>✦ ARSLAN KHICHI AI PROMPT ASSISTANT</span><span>Built for ideas that matter.</span></footer>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
